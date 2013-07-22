@@ -412,6 +412,8 @@ function onPjaxPopstate(event) {
       direction = pjax.state.id < state.id ? 'forward' : 'back'
     }
 
+    $(document).trigger('pjax:beforePopstate', [state, direction, contents])
+
     // Should use container in current state when going back and loading contents from cache
     // as we cache its content when coming to this state
     container = $(direction === 'back' ? pjax.state.container : state.container)
